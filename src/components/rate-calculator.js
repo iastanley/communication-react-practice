@@ -28,8 +28,12 @@ export default class RateCalculator extends React.Component {
       })
     }
 
+    calcHrRate() {
+      return (this.state.dayRate/this.state.hours).toFixed(2);
+    }
+
     render() {
-        const rate = this.state.dayRate/this.state.hours;
+        const rate = this.calcHrRate();
         return (
             <form>
                 <NumberInput id="day-rate" label="Day rate" min={0} max={5000}
@@ -38,7 +42,7 @@ export default class RateCalculator extends React.Component {
                 <NumberInput id="hours" label="Hours" min={1} max={12}
                 value={this.state.hours}
                 onChange={value => this.setHours(value)}/>
-                <Output id="hourly-rate" label="Hourly rate" value={rate.toFixed(2)}
+                <Output id="hourly-rate" label="Hourly rate" value={rate}
                 />
             </form>
         );
