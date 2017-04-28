@@ -1,9 +1,10 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import Surprise from './components/surprise';
+import LiveSearch from './components/live-search';
 import './index.css';
+import peaks from './peaks.json';
 
 ReactDOM.render(
-  <Surprise />,
+  <LiveSearch characters={peaks} />,
   document.getElementById('root')
 );
