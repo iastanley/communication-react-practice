@@ -7,7 +7,7 @@ export default function NumberInput(props) {
             <label htmlFor={props.id}>{props.label}</label>
             <input type="number" id={props.id} min={props.min} max={props.max}
             value={props.value}
-            onChange={(e)=>props.onChange(e.target.value)}/>
+            onChange={props.onChange}/>
         </div>
     );
 }

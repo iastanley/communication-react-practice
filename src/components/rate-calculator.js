@@ -8,8 +8,9 @@ export default class RateCalculator extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-          dayRate: 400,
-          hours: 1
+          dayRate: 1,
+          hours: 1,
+          hrRate: 1
         };
         //why is bind not needed here???
         // this.setDayRate = this.setDayRate.bind(this);
@@ -20,29 +21,33 @@ export default class RateCalculator extends React.Component {
       this.setState({
         dayRate
       });
+      this.setHrRate();
     }
 
     setHours(hours) {
       this.setState({
         hours
-      })
+      });
+      this.setHrRate();
     }
 
-    calcHrRate() {
-      return (this.state.dayRate/this.state.hours).toFixed(2);
+    setHrRate() {
+      this.setState({
+        hrRate: (this.state.dayRate/this.state.hours).toFixed(2)
+      });
     }
 
     render() {
-        const rate = this.calcHrRate();
+        console.log('render');
         return (
             <form>
                 <NumberInput id="day-rate" label="Day rate" min={0} max={5000}
                 value={this.state.dayRate}
-                onChange={value => this.setDayRate(value)}/>
+                onChange={event => this.setDayRate(event.target.value)}/>
                 <NumberInput id="hours" label="Hours" min={1} max={12}
                 value={this.state.hours}
-                onChange={value => this.setHours(value)}/>
-                <Output id="hourly-rate" label="Hourly rate" value={rate}
+                onChange={event => this.setHours(event.target.value)}/>
+                <Output id="hourly-rate" label="Hourly rate" value={this.state.hrRate}
                 />
             </form>
         );
