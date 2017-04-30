@@ -12,9 +12,6 @@ export default class RateCalculator extends React.Component {
           hours: 1,
           hrRate: 1
         };
-        //why is bind not needed here???
-        // this.setDayRate = this.setDayRate.bind(this);
-        // this.setHours = this.setHours.bind(this);
     }
 
     setDayRate(dayRate) {
